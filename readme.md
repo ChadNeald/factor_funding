@@ -19,7 +19,7 @@ Additionally, the raw provincial Canadian population data can be found on Statis
 
 The raw data for this project is already processed and saved in this repository under the /data/processed/ directory. If you wish to repeat the data processing yourself however, begin by cloning the repo and move into the root of the project. Run the following command from your terminal to set up a new conda environment with the necessary packages installed:
 
-`conda env create -f env.yaml`
+`conda env create -f env.yml`
 
 Once the above command is finished executing, open up the "pipeline.ipynb" notebook and run it from top to bottom. Please note however, that in order to run the Spotify section of this notebook you will need to obtain your own "Spotify for Developers" credentials, which includes both a client ID and a client secret, and input those values into the appropriate function call. Create an account [here](https://developer.spotify.com/dashboard/login) to acquire these credentials.
 
