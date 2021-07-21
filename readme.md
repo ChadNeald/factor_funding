@@ -8,4 +8,4 @@ The raw FACTOR data can be found in the form of a pdf at https://www.factor.ca/f
 
 The raw provincial Canadian population data can be found on Statistics Canada's website at the following link https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901&cubeTimeFrame.startMonth=01&cubeTimeFrame.startYear=2020&cubeTimeFrame.endMonth=01&cubeTimeFrame.endYear=2020&referencePeriods=20200101%2C20200101 
 
-![Tableau Overview]("/images/tableau_overview.gif")
+![Tableau Overview](/images/tableau_overview.gif)
