@@ -2,7 +2,9 @@
 
 Author: Chad Neald
 
-FACTOR is the Foundation Assisting Canadian Talent on Recordings. Every year Canadian music organizations and artists apply to receive one of the many grants available through FACTOR. This is a brief investigation into the money allocated during the 2019-2020 and 2020-2021 fiscal years. Python is used to process the data while Tableau is used to visualize the data and present the findigs.
+FACTOR is the Foundation Assisting Canadian Talent on Recordings. Every year Canadian music organizations and artists apply to receive one of the many grants available through FACTOR. This is a brief investigation into the money allocated during the 2019-2020 and 2020-2021 fiscal years. 
+
+Python is used to process the data while Tableau is used to visualize the data and present the findings.
 
 The final results of this investigation are presented in a public Tableau story available [here](https://public.tableau.com/app/profile/chad6383/viz/FACTORFundingChadN/FACTORStory). 
 
