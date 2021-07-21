@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def process_raw_data(input_file, output, num_sheets=27):
+def process_factor_data(input_file, output, num_sheets=27):
     """
     This function imports the raw FACTOR data as a .xlsx file, cleans it,
     and exports it as a csv file.
@@ -45,3 +45,50 @@ def process_raw_data(input_file, output, num_sheets=27):
     combined_data["offer"] = pd.to_numeric(combined_data["offer"])
 
     combined_data.to_csv(output, encoding="utf-8", index=False)
+
+
+def process_population_data(factor_processed_input_file, pop_input_file, pop_output_file):
+    """
+    This function processes the raw population data as a .csv file, cleans it,
+    and exports it as a csv file.
+
+    Parameters
+    ----------
+    factor_processed_input_file : str
+        The .csv file containing the processed FACTOR data.
+    pop_input_file : str
+        The .csv file containing the raw population data.
+    pop_output_file : str
+        The name of the output .csv file for the processed population data. 
+
+    """
+
+    # Read in FACTOR data
+    factor_data = pd.read_csv(factor_processed_input_file)
+
+    # Read in the provincial population estimates
+    pop_data = pd.read_csv(pop_input_file)
+
+    # Clean the population data into the same form as the FACTOR data
+    pop_data = pop_data[['GEO', "VALUE"]][1:]
+    pop_data = pop_data.rename(
+        columns={"GEO": "applicant_province", "VALUE": "population"})
+    pop_data = pop_data.replace("Quebec", "Québec")
+    pop_data['population'] = pd.to_numeric(pop_data["population"])
+
+    # Find the offer sum for each province
+    province_offer_sums = pd.DataFrame(
+        factor_data.groupby("applicant_province")["offer"].sum())
+    province_offer_sums = province_offer_sums.reset_index()
+    province_offer_sums = province_offer_sums.rename(
+        columns={'offer': 'offer_sum'})
+
+    # Combine the provincial offer sum data with the population data
+    province_offer_pop = province_offer_sums.merge(pop_data)
+
+    # Calculate the ratio of offer to population
+    province_offer_pop['offer_pop_ratio'] = province_offer_pop['offer_sum'] / \
+        province_offer_pop['population']
+
+    # Export to CSV
+    province_offer_pop.to_csv(pop_output_file, index=False)
